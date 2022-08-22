@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class NaverSpringBootApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(NaverSpringBootApplication.class, args);
+		SpringApplication.run(NaverSpringBootApplication.class);
 	}
 
 }
