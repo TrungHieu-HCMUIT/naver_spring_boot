@@ -1,6 +1,9 @@
 package com.example.naver.spring.boot.api.employee.controller;
 
+import com.example.naver.spring.boot.api.department.controller.dto.request.DepartmentUpdate;
+import com.example.naver.spring.boot.api.department.repository.entity.Department;
 import com.example.naver.spring.boot.api.employee.controller.dto.request.EmployeeCreate;
+import com.example.naver.spring.boot.api.employee.controller.dto.request.EmployeeUpdate;
 import com.example.naver.spring.boot.api.employee.controller.dto.response.EmployeeResponse;
 import com.example.naver.spring.boot.api.employee.repository.entity.Employee;
 import com.example.naver.spring.boot.api.employee.service.EmployeeService;
@@ -42,6 +45,12 @@ public class EmployeeController extends BaseController {
         Employee employee = employeeService.createEmployee(employeeCreateDto);
         EmployeeResponse employeeDto = modelMapper.map(employee, EmployeeResponse.class);
         return successResponse(employeeDto);
+    }
+
+    @PutMapping("/employee/{id}")
+    public ResponseEntity<Object> updateEmployee(@PathVariable int id, @RequestBody EmployeeUpdate employeeUpdate) {
+        employeeService.updateEmployee(id, employeeUpdate);
+        return successResponse("true");
     }
 
     @DeleteMapping("/employee/{id}")

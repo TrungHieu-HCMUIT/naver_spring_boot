@@ -5,7 +5,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class DepartmentCreate {
+public class DepartmentUpdate {
     private String name;
     private String description;
 }

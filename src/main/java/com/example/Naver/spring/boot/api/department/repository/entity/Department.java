@@ -4,6 +4,7 @@ import com.example.naver.spring.boot.api.employee.repository.entity.Employee;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.Fetch;
 
 import javax.persistence.*;
@@ -25,5 +26,6 @@ public class Department {
     private String description;
 
     @OneToMany(mappedBy = "department")
+    @Cascade(value = org.hibernate.annotations.CascadeType.DELETE)
     private List<Employee> employees;
 }

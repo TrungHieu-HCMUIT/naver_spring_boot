@@ -31,6 +31,24 @@ public class DepartmentService {
         return departmentRepository.save(department);
     }
 
+    public void updateDepartment(int id, Department updateDepartment) {
+        var department = departmentRepository.findById(id);
+        if (department.isEmpty()) {
+            throw new DataNotFoundException(Const.EntityName.DEPARTMENT);
+        }
+
+        Department checkedDepartment = department.get();
+        String name = updateDepartment.getName();
+        String description = updateDepartment.getDescription();
+        if (name != null) {
+            checkedDepartment.setName(name);
+        }
+        if (description != null) {
+            checkedDepartment.setDescription(description);
+        }
+        departmentRepository.save(checkedDepartment);
+    }
+
     public void deleteDepartment(int id) {
         boolean isExist = departmentRepository.existsById(id);
         if (!isExist) {
