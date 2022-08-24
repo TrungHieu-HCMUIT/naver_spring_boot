@@ -1,6 +1,6 @@
 package com.example.naver.spring.boot.api.employee.controller;
 
-import com.example.naver.spring.boot.api.employee.controller.dto.request.EmployeeCreateDto;
+import com.example.naver.spring.boot.api.employee.controller.dto.request.EmployeeCreate;
 import com.example.naver.spring.boot.api.employee.controller.dto.response.EmployeeResponse;
 import com.example.naver.spring.boot.api.employee.repository.entity.Employee;
 import com.example.naver.spring.boot.api.employee.service.EmployeeService;
@@ -38,7 +38,7 @@ public class EmployeeController extends BaseController {
     }
 
     @PostMapping("/employee")
-    public ResponseEntity<Object> createEmployee(@RequestBody EmployeeCreateDto employeeCreateDto) {
+    public ResponseEntity<Object> createEmployee(@RequestBody EmployeeCreate employeeCreateDto) {
         Employee employee = employeeService.createEmployee(employeeCreateDto);
         EmployeeResponse employeeDto = modelMapper.map(employee, EmployeeResponse.class);
         return successResponse(employeeDto);

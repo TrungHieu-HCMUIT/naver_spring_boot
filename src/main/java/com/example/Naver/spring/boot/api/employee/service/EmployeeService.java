@@ -1,7 +1,7 @@
 package com.example.naver.spring.boot.api.employee.service;
 
 import com.example.naver.spring.boot.api.department.repository.DepartmentRepository;
-import com.example.naver.spring.boot.api.employee.controller.dto.request.EmployeeCreateDto;
+import com.example.naver.spring.boot.api.employee.controller.dto.request.EmployeeCreate;
 import com.example.naver.spring.boot.api.employee.repository.EmployeeRepository;
 import com.example.naver.spring.boot.api.employee.repository.entity.Employee;
 import com.example.naver.spring.boot.common.Const;
@@ -32,7 +32,7 @@ public class EmployeeService {
         return employee.get();
     }
 
-    public Employee createEmployee(EmployeeCreateDto employeeCreateDto) {
+    public Employee createEmployee(EmployeeCreate employeeCreateDto) {
         var department = departmentRepository.findById(employeeCreateDto.getDepartmentId());
         if (department.isEmpty()) {
             throw new DataNotFoundException(Const.EntityName.DEPARTMENT);

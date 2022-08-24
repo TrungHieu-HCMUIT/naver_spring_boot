@@ -1,5 +1,6 @@
 package com.example.naver.spring.boot.api.department.controller;
 
+import com.example.naver.spring.boot.api.department.controller.dto.request.DepartmentCreate;
 import com.example.naver.spring.boot.api.department.controller.dto.response.DepartmentResponse;
 import com.example.naver.spring.boot.api.department.controller.dto.response.SimpleDepartmentResponse;
 import com.example.naver.spring.boot.api.department.repository.entity.Department;
@@ -39,7 +40,8 @@ public class DepartmentController extends BaseController {
     }
 
     @PostMapping("/department")
-    public ResponseEntity<Object> createDepartment(@RequestBody Department department) {
+    public ResponseEntity<Object> createDepartment(@RequestBody DepartmentCreate departmentDto) {
+        Department department = modelMapper.map(departmentDto, Department.class);
         return successResponse(departmentService.createDepartment(department));
     }
 

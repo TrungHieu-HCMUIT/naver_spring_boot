@@ -11,7 +11,7 @@ import java.util.Date;
 
 @Getter
 @Setter
-public class EmployeeCreateDto {
+public class EmployeeCreate {
 
     private String name;
 
