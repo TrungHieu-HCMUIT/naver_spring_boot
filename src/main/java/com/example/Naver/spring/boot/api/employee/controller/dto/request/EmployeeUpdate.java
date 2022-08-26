@@ -2,12 +2,14 @@ package com.example.naver.spring.boot.api.employee.controller.dto.request;
 
 import com.example.naver.spring.boot.api.employee.model.Gender;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import java.util.Date;
+
 
 @Getter
 @Setter
@@ -21,5 +23,5 @@ public class EmployeeUpdate {
     @Enumerated(EnumType.STRING)
     private Gender gender;
 
-    private int departmentId;
+    private Integer departmentId;
 }

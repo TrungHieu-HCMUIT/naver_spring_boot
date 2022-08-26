@@ -45,9 +45,7 @@ public class EmployeeService {
         Employee employee = mapper.map(employeeCreateDto, Employee.class);
         employee.setDepartment(department.get());
 
-        var result = employeeRepository.save(employee);
-
-        return employee;
+        return employeeRepository.save(employee);
     }
 
     public void updateEmployee(long id, EmployeeUpdate employeeUpdate) {
@@ -61,8 +59,8 @@ public class EmployeeService {
         Gender genderToUpdate = employeeUpdate.getGender();
         Department departmentToUpdate = null;
 
-        int departmentId = employeeUpdate.getDepartmentId();
-        if (departmentId != 0) {
+        Integer departmentId = employeeUpdate.getDepartmentId();
+        if (departmentId != null) {
             var department  = departmentRepository.findById(departmentId);
             if (department.isEmpty()) {
                 throw new DataNotFoundException(Const.EntityName.DEPARTMENT);

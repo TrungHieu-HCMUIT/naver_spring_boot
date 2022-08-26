@@ -35,9 +35,7 @@ public class DepartmentController extends BaseController {
 
     @GetMapping("/department/{id}")
     public ResponseEntity<Object> getDepartmentById(@PathVariable int id) {
-        Department department = departmentService.findDepartment(id);
-        DepartmentResponse departmentDto = modelMapper.map(department, DepartmentResponse.class);
-        return successResponse(departmentDto);
+        return successResponse(departmentService.findDepartment(id));
     }
 
     @PostMapping("/department")
