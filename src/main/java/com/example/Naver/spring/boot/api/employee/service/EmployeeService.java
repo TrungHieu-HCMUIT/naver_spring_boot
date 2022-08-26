@@ -4,7 +4,10 @@ import com.example.naver.spring.boot.api.department.repository.DepartmentReposit
 import com.example.naver.spring.boot.api.department.repository.entity.Department;
 import com.example.naver.spring.boot.api.employee.controller.dto.request.EmployeeCreate;
 import com.example.naver.spring.boot.api.employee.controller.dto.request.EmployeeUpdate;
+import com.example.naver.spring.boot.api.employee.controller.dto.response.EmployeeResponse;
+import com.example.naver.spring.boot.api.employee.controller.dto.response.SimpleEmployeeResponse;
 import com.example.naver.spring.boot.api.employee.model.Gender;
+import com.example.naver.spring.boot.api.employee.repository.EmployeeMyBatisRepository;
 import com.example.naver.spring.boot.api.employee.repository.EmployeeRepository;
 import com.example.naver.spring.boot.api.employee.repository.entity.Employee;
 import com.example.naver.spring.boot.common.Const;
@@ -15,25 +18,38 @@ import org.springframework.stereotype.Service;
 
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
 public class EmployeeService {
 
     private final EmployeeRepository employeeRepository;
+    private final EmployeeMyBatisRepository employeeMyBatisRepository;
     private final DepartmentRepository departmentRepository;
-    private final ModelMapper mapper;
+    private final ModelMapper modelMapper;
 
-    public List<Employee> getEmployees() {
-        return employeeRepository.findAll();
+    public List<SimpleEmployeeResponse> getEmployees() {
+        List<Employee> employees = employeeRepository.findAll();
+        List<SimpleEmployeeResponse> employeeResponses = employees.stream()
+                .map(employee -> modelMapper.map(employee, SimpleEmployeeResponse.class))
+                .collect(Collectors.toList());
+        return employeeResponses;
     }
 
-    public Employee findEmployee(long id) {
-        var employee = employeeRepository.findById(id);
-        if (employee.isEmpty()) {
+    public EmployeeResponse findEmployee(long id) {
+//        var employee = employeeRepository.findById(id);
+//        if (employee.isEmpty()) {
+//            throw new DataNotFoundException(Const.EntityName.EMPLOYEE);
+//        }
+//        return employee.get();
+
+        Employee employee = employeeMyBatisRepository.findById(id);
+        if (employee == null) {
             throw new DataNotFoundException(Const.EntityName.EMPLOYEE);
         }
-        return employee.get();
+
+        return modelMapper.map(employee, EmployeeResponse.class);
     }
 
     public Employee createEmployee(EmployeeCreate employeeCreateDto) {
@@ -42,7 +58,7 @@ public class EmployeeService {
             throw new DataNotFoundException(Const.EntityName.DEPARTMENT);
         }
 
-        Employee employee = mapper.map(employeeCreateDto, Employee.class);
+        Employee employee = modelMapper.map(employeeCreateDto, Employee.class);
         employee.setDepartment(department.get());
 
         return employeeRepository.save(employee);

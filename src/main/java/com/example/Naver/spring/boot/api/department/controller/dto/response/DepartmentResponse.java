@@ -1,6 +1,7 @@
 package com.example.naver.spring.boot.api.department.controller.dto.response;
 
 import com.example.naver.spring.boot.api.employee.controller.dto.response.EmployeeResponse;
+import com.example.naver.spring.boot.api.employee.controller.dto.response.SimpleEmployeeResponse;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -12,5 +13,5 @@ public class DepartmentResponse {
     private int departmentId;
     private String name;
     private String description;
-    private List<EmployeeResponse> employees;
+    private List<SimpleEmployeeResponse> employees;
 }

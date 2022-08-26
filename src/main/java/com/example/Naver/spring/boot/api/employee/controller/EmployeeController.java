@@ -26,18 +26,12 @@ public class EmployeeController extends BaseController {
 
     @GetMapping("/employees")
     public ResponseEntity<Object> getEmployees() {
-        List<Employee> employees = employeeService.getEmployees();
-        List<EmployeeResponse> employeesDto = employees.stream()
-                .map(employee -> modelMapper.map(employee, EmployeeResponse.class))
-                .collect(Collectors.toList());
-        return successResponse(employeesDto);
+        return successResponse(employeeService.getEmployees());
     }
 
     @GetMapping("/employee/{id}")
     public ResponseEntity<Object> getEmployeeById(@PathVariable long id) {
-        Employee employee = employeeService.findEmployee(id);
-        EmployeeResponse employeeDto = modelMapper.map(employee, EmployeeResponse.class);
-        return successResponse(employeeDto);
+        return successResponse(employeeService.findEmployee(id));
     }
 
     @PostMapping("/employee")
