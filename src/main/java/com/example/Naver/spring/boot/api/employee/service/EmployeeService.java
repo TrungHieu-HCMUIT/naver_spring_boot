@@ -37,19 +37,21 @@ public class EmployeeService {
         return employeeResponses;
     }
 
-    public EmployeeResponse findEmployee(long id) {
-//        var employee = employeeRepository.findById(id);
-//        if (employee.isEmpty()) {
-//            throw new DataNotFoundException(Const.EntityName.EMPLOYEE);
-//        }
-//        return employee.get();
-
+    public EmployeeResponse findEmployeeWithBatis(long id) {
         Employee employee = employeeMyBatisRepository.findById(id);
         if (employee == null) {
             throw new DataNotFoundException(Const.EntityName.EMPLOYEE);
         }
 
         return modelMapper.map(employee, EmployeeResponse.class);
+    }
+
+    public EmployeeResponse findEmployeeById(long id) {
+        var employee = employeeRepository.findById(id);
+        if (employee.isEmpty()) {
+            throw new DataNotFoundException(Const.EntityName.EMPLOYEE);
+        }
+        return modelMapper.map(employee.get(), EmployeeResponse.class);
     }
 
     public Employee createEmployee(EmployeeCreate employeeCreateDto) {

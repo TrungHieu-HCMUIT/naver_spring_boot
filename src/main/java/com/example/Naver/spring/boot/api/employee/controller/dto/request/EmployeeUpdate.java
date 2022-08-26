@@ -2,7 +2,6 @@ package com.example.naver.spring.boot.api.employee.controller.dto.request;
 
 import com.example.naver.spring.boot.api.employee.model.Gender;
 import com.fasterxml.jackson.annotation.JsonFormat;
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 

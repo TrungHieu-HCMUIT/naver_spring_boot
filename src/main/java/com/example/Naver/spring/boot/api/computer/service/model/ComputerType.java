@@ -1,7 +1,5 @@
 package com.example.naver.spring.boot.api.computer.service.model;
 
-import com.example.naver.spring.boot.common.error_handling.custom_exception.InvalidRequestException;
-
 public enum ComputerType {
     PC("pc"),
     SERVER("server");

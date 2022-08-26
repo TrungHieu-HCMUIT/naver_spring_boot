@@ -28,7 +28,16 @@ public class DepartmentService {
         return departmentRepository.findAll();
     }
 
-    public DepartmentResponse findDepartment(int id) {
+    public DepartmentResponse findDepartmentById(int id) {
+        var department = departmentRepository.findById(id);
+        if (department.isEmpty()) {
+            throw new DataNotFoundException(Const.EntityName.DEPARTMENT);
+        }
+
+        return modelMapper.map(department.get(), DepartmentResponse.class);
+    }
+
+    public DepartmentResponse findDepartmentWithBatis(int id) {
         Department department = departmentMyBatisRepository.findById(id);
         if (department == null) {
             throw new DataNotFoundException(Const.EntityName.DEPARTMENT);

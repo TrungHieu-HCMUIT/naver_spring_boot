@@ -1,21 +1,19 @@
 package com.example.naver.spring.boot.api.computer.service;
 
 import com.example.naver.spring.boot.api.computer.service.model.Computer;
-import com.example.naver.spring.boot.api.computer.service.model.ComputerType;
 import com.example.naver.spring.boot.api.computer.service.model.computer_factory.ComputerFactory;
 import com.example.naver.spring.boot.common.error_handling.custom_exception.InvalidRequestException;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
 import java.util.Map;
 
 @Service
+@RequiredArgsConstructor
 public class FactoryMethodService {
 
-    @Autowired
-    ComputerFactory computerFactory;
+    private final ComputerFactory computerFactory;
 
     public Map<String, String> getComputerFromValue(String type) {
 

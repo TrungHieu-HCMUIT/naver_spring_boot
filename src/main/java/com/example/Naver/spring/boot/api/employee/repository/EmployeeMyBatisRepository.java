@@ -3,10 +3,6 @@ package com.example.naver.spring.boot.api.employee.repository;
 import com.example.naver.spring.boot.api.department.repository.entity.Department;
 import com.example.naver.spring.boot.api.employee.repository.entity.Employee;
 import org.apache.ibatis.annotations.*;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
-
-import java.util.List;
 
 @Mapper
 public interface EmployeeMyBatisRepository {

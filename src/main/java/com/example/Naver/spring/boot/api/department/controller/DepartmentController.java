@@ -2,7 +2,6 @@ package com.example.naver.spring.boot.api.department.controller;
 
 import com.example.naver.spring.boot.api.department.controller.dto.request.DepartmentCreate;
 import com.example.naver.spring.boot.api.department.controller.dto.request.DepartmentUpdate;
-import com.example.naver.spring.boot.api.department.controller.dto.response.DepartmentResponse;
 import com.example.naver.spring.boot.api.department.controller.dto.response.SimpleDepartmentResponse;
 import com.example.naver.spring.boot.api.department.repository.entity.Department;
 import com.example.naver.spring.boot.api.department.service.DepartmentService;
@@ -35,7 +34,12 @@ public class DepartmentController extends BaseController {
 
     @GetMapping("/department/{id}")
     public ResponseEntity<Object> getDepartmentById(@PathVariable int id) {
-        return successResponse(departmentService.findDepartment(id));
+        return successResponse(departmentService.findDepartmentById(id));
+    }
+
+    @GetMapping("v2/department/{id}")
+    public ResponseEntity<Object> getDepartmentByIdV2(@PathVariable int id) {
+        return successResponse(departmentService.findDepartmentWithBatis(id));
     }
 
     @PostMapping("/department")

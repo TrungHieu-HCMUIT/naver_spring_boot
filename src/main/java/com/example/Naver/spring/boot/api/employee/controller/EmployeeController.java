@@ -1,7 +1,5 @@
 package com.example.naver.spring.boot.api.employee.controller;
 
-import com.example.naver.spring.boot.api.department.controller.dto.request.DepartmentUpdate;
-import com.example.naver.spring.boot.api.department.repository.entity.Department;
 import com.example.naver.spring.boot.api.employee.controller.dto.request.EmployeeCreate;
 import com.example.naver.spring.boot.api.employee.controller.dto.request.EmployeeUpdate;
 import com.example.naver.spring.boot.api.employee.controller.dto.response.EmployeeResponse;
@@ -12,9 +10,6 @@ import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
-import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api")
@@ -31,7 +26,12 @@ public class EmployeeController extends BaseController {
 
     @GetMapping("/employee/{id}")
     public ResponseEntity<Object> getEmployeeById(@PathVariable long id) {
-        return successResponse(employeeService.findEmployee(id));
+        return successResponse(employeeService.findEmployeeById(id));
+    }
+
+    @GetMapping("/v2/employee/{id}")
+    public ResponseEntity<Object> getEmployeeByIdV2(@PathVariable long id) {
+        return successResponse(employeeService.findEmployeeWithBatis(id));
     }
 
     @PostMapping("/employee")
