@@ -47,4 +47,11 @@ public class ControllerAdvisor extends ResponseEntityExceptionHandler {
         return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
     }
 
+    @ExceptionHandler(InvalidRequestException.class)
+    public ResponseEntity<Object> handleInvalidRequestException(
+            InvalidRequestException ex, WebRequest request) {
+        ErrorResponse response = new ErrorResponse(HttpStatus.BAD_REQUEST.value(), "ErrInvalidRequest", ex.getMessage());
+        return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
+    }
+
 }
