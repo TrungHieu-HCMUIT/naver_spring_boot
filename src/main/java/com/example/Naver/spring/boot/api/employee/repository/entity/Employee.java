@@ -26,7 +26,7 @@ public class Employee {
     @Enumerated(EnumType.STRING)
     private Gender gender;
 
-    @ManyToOne
+    @ManyToOne()
     @JoinColumn(name = "departmentId", nullable = false)
     private Department department;
 }
