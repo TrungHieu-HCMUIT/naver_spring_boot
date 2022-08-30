@@ -9,7 +9,7 @@ import java.util.List;
 
 @Repository
 public interface ProductRepository extends JpaRepository<Product, Integer> {
-    public List<Product> findProductsByPriceGreaterThan(BigDecimal price);
-    public List<Product> findProductsByPriceLessThan(BigDecimal price);
-    public List<Product> findProductsByPriceEquals(BigDecimal price);
+    List<Product> findProductsByPriceGreaterThan(BigDecimal price);
+    List<Product> findProductsByPriceLessThan(BigDecimal price);
+    List<Product> findProductsByPriceEquals(BigDecimal price);
 }

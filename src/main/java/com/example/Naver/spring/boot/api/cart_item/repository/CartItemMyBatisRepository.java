@@ -16,10 +16,11 @@ public interface CartItemMyBatisRepository {
             "join CART C on C.ID = CI.CART_ID " +
             "join PRODUCT P on P.ID = CI.PRODUCT_ID " +
             "join CUSTOMER CTM on CTM.CART_ID = C.ID " +
-//            "where CTM.ID = #{customerId}" +
-            "where P.NAME = #{productName} " +
+            "where CTM.ID = #{customerId} " +
+            "and P.NAME = #{productName} " +
             "limit #{limit} offset #{offset}")
     @Results(value = {
+            @Result(column = "cart_id", property = "cartId"),
             @Result(column = "product_id", property = "productId"),
             @Result(column = "name", property = "name"),
             @Result(column = "type", property = "type"),
@@ -29,5 +30,24 @@ public interface CartItemMyBatisRepository {
             @Result(column = "total_amount", property = "totalAmount"),
             @Result(column = "date_added", property = "dateAdded")
     })
-    List<ItemInCartResponse> getItemsFromCart(int customerId, String productName, int offset, int limit);
+    List<ItemInCartResponse> getItemsFromCartWithParam(int customerId, String productName, int offset, int limit);
+
+    @Select("Select * " +
+            "from CART_ITEM CI " +
+            "join CART C on C.ID = CI.CART_ID " +
+            "join PRODUCT P on P.ID = CI.PRODUCT_ID " +
+            "join CUSTOMER CTM on CTM.CART_ID = C.ID " +
+            "where CTM.ID = #{customerId} ")
+    @Results(value = {
+            @Result(column = "cart_id", property = "cartId"),
+            @Result(column = "product_id", property = "productId"),
+            @Result(column = "name", property = "name"),
+            @Result(column = "type", property = "type"),
+            @Result(column = "size", property = "size"),
+            @Result(column = "price", property = "price"),
+            @Result(column = "quantity_wished", property = "quantity"),
+            @Result(column = "total_amount", property = "totalAmount"),
+            @Result(column = "date_added", property = "dateAdded")
+    })
+    List<ItemInCartResponse> getItemsFromCartWithoutParam(int customerId);
 }

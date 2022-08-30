@@ -5,6 +5,6 @@ import lombok.Data;
 @Data
 public class ItemsFromCartParam {
     private String productName;
-    private int offset;
-    private int limit;
+    private Integer offset;
+    private Integer limit;
 }

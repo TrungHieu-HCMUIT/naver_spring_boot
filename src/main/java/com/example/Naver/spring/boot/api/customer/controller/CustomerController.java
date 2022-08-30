@@ -2,7 +2,6 @@ package com.example.naver.spring.boot.api.customer.controller;
 
 import com.example.naver.spring.boot.api.customer.controller.dto.request.CustomerCreateRequest;
 import com.example.naver.spring.boot.api.customer.controller.dto.response.CustomerSimpleResponse;
-import com.example.naver.spring.boot.api.customer.controller.dto.response.CustomerResponse;
 import com.example.naver.spring.boot.api.customer.repository.entity.Customer;
 import com.example.naver.spring.boot.api.customer.service.CustomerService;
 import com.example.naver.spring.boot.base.BaseController;

@@ -24,4 +24,7 @@ public interface ProductMyBatisRepository {
     @Select("select * from PRODUCT " +
             "where price = #{price}")
     List<Product> findProductsEqualsTo(BigDecimal price);
+
+    @Select("select * from PRODUCT")
+    List<Product> findAllProducts();
 }

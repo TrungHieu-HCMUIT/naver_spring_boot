@@ -15,7 +15,7 @@ import java.util.List;
 @Table(name = "CART")
 public class Cart {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.TABLE)
     private Integer id;
 
     @OneToMany(mappedBy = "cart")

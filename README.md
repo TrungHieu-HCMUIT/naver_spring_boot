@@ -1,244 +1,312 @@
 # SpringBoot project of Naver's course
 
 ## APIs
-1. [Department APIs (v1)](#department-apis-v1)
-   1. [GET - Get Departments](#get---get-departments)
-   2. [GET - Get Department by ID](#get---get-department-by-id) 
-   3. [POST - Create new Department by ID](#post---create-new-department-by-id)
-   4. [PUT - Update Department by ID](#put---update-department-by-id)
-   5. [DELETE - Delete Department by ID](#delete---delete-department-by-id)
-2. [Employee APIs (v1)](#employee-apis-v1)
-   1. [GET - Get Employees](#get---get-employees)
-   2. [GET - Get Employee by ID](#get---get-employee-by-id)
-   3. [POST - Create new Employee by ID](#post---create-new-employee-by-id)
-   4. [PUT - Update Employee by ID](#put---update-employee-by-id)
-   5. [DELETE - Delete Employee by ID](#delete---delete-employee-by-id)
-3. [Department API (v2)](#department-apis-v2)
-   1. [GET - Get Department by ID with MyBatis](#get---get-department-by-id-with-mybatis)
-4. [Employee API (v2)](#employee-apis-v2)
-   1. [GET - Get Employee by ID with MyBatis](#get---get-employee-by-id-with-mybatis)
-5. [Factory Method APIs](#factory-method-apis)
-   1. [GET - Get computer type](#get---get-computer-type)
-6. [Error Response](#error-response)
-## Department APIs v1
-   ### GET - Get Departments
-   * Request api/departments
+1. [Customer APIs](#customer-apis)
+   1. [GET - Get customers](#get---get-customers)
+   2. [POST - Create new customer](#post---create-new-customer)
+2. [Product APIs](#product-apis)
+   1. [GET - Get products without condition](#get---get-products-without-condition)
+   2. [GET - Get products with condition](#get---get-products-with-condition)
+   3. [POST - Create new product](#post---create-new-product)
+3. [Cart APIs](#cart-apis)
+   1. [GET - Get item from cart without param](#get---get-items-from-cart-without-param)
+   2. [GET - Get item from cart with param](#get---get-item-from-cart-with-param)
+   3. [POST - Add item to cart](#post---add-item-to-cart)
+4. [Error Response](#error-response)
+## Customer APIs
+   ### GET - Get customers
+   * Request api/customers
    * Response
    ```json
 {
    "data": [
       {
-         "departmentId": 1,
-         "name": "IT Department",
-         "description": "For developers"
+         "id": 1,
+         "name": "Trung Hieu 1",
+         "address": "Tan Binh",
+         "phone": "123456789"
+      },
+      {
+         "id": 2,
+         "name": "Trung Hieu 2",
+         "address": "Tan Binh",
+         "phone": "123456789"
+      },
+      {
+         "id": 3,
+         "name": "Trung Hieu 3",
+         "address": "Tan Binh",
+         "phone": "123456789"
+      },
+      {
+         "id": 4,
+         "name": "Trung Hieu 4",
+         "address": "Tan Binh",
+         "phone": "123456789"
+      },
+      {
+         "id": 5,
+         "name": "Trung Hieu 5",
+         "address": "Tan Binh",
+         "phone": "123456789"
+      },
+      {
+         "id": 6,
+         "name": "Trung Hieu 6",
+         "address": "Tan Binh",
+         "phone": "123456789"
+      },
+      {
+         "id": 7,
+         "name": "Trung Hieu 7",
+         "address": "Tan Binh",
+         "phone": "123456789"
+      },
+      {
+         "id": 8,
+         "name": "Trung Hieu 8",
+         "address": "Tan Binh",
+         "phone": "123456789"
+      },
+      {
+         "id": 9,
+         "name": "Trung Hieu 9",
+         "address": "Tan Binh",
+         "phone": "123456789"
+      },
+      {
+         "id": 10,
+         "name": "Trung Hieu 10",
+         "address": "Tan Binh",
+         "phone": "123456789"
       }
    ],
    "statusCode": 200
 }
    ```
-   ### GET - Get Department by ID
-   * Request api/department/1
+   ### POST - Create new customer
+   * Request api/customer
+   ```json
+{
+    "name" : "Trung Hieu 10",
+    "address" : "Tan Binh",
+    "phone" : "123456789"
+}
+   ```
    * Response
    ```json 
 {
     "data": {
-        "departmentId": 1,
-        "name": "IT Department",
-        "description": "For developers",
-        "employees": [
-            {
-                "employeeId": 1,
-                "name": "Trung Hieu",
-                "birthday": "01-07-2001",
-                "gender": "MALE"
-            }
-        ]
+        "id": 10,
+        "name": "Trung Hieu 10",
+        "address": "Tan Binh",
+        "phone": "123456789"
     },
     "statusCode": 200
 }
    ```
-   ### POST - Create new Department by ID
-   * Request api/department
-   ```json
-{
-   "name" : "IT Department",
-   "description" : "For devs"
-}
-   ```
-   * Response
-   ```json
-{
-   "data": {
-      "departmentId": 1,
-      "name": "IT Department",
-      "description": "For devs",
-      "employees": []
-   },
-   "statusCode": 200
-}
-   ```
-   ### PUT - Update Department by ID
-   * Request api/department/1
-   ```json
-{
-   "description" : "For developers"
-}
-   ```
-   * Response
-   ```json
-{
-   "data": "true",
-   "statusCode": 200
-}
-   ```
-   ### DELETE - Delete Department by ID
-   * Request api/department/1
-   * Response
-   ```json
-{
-   "data": "true",
-   "statusCode": 200
-}
-   ```
-## Employee APIs v1
-   ### GET - Get Employees
-   * Request api/employee
+## Product APIs
+   ### GET - Get products without condition
+   * Request api/products
    * Response
    ```json
 {
    "data": [
       {
-         "employeeId": 2,
-         "name": "Trung Hieu",
-         "birthday": "30-06-2001",
-         "gender": "MALE"
+         "id": 1,
+         "name": "Product 1",
+         "type": "product",
+         "size": "XL",
+         "price": 100000.00
+      },
+      {
+         "id": 2,
+         "name": "Product 2",
+         "type": "product",
+         "size": "XL",
+         "price": 100000.00
+      },
+      {
+         "id": 3,
+         "name": "Product 3",
+         "type": "product",
+         "size": "XL",
+         "price": 100000.00
+      },
+      {
+         "id": 4,
+         "name": "Product 4",
+         "type": "product",
+         "size": "XL",
+         "price": 100000.00
+      },
+      {
+         "id": 5,
+         "name": "Product 5",
+         "type": "product",
+         "size": "XL",
+         "price": 100000.00
+      },
+      {
+         "id": 6,
+         "name": "Product 6",
+         "type": "product",
+         "size": "XL",
+         "price": 100000.00
+      },
+      {
+         "id": 7,
+         "name": "Product 7",
+         "type": "product",
+         "size": "XL",
+         "price": 100000.00
+      },
+      {
+         "id": 8,
+         "name": "Product 8",
+         "type": "product",
+         "size": "XL",
+         "price": 100000.00
+      },
+      {
+         "id": 9,
+         "name": "Product 9",
+         "type": "product",
+         "size": "XL",
+         "price": 150000.00
+      },
+      {
+         "id": 10,
+         "name": "Product 10",
+         "type": "product",
+         "size": "XL",
+         "price": 200000.00
       }
    ],
    "statusCode": 200
 }
    ```
-   ### GET - Get Employee by ID
-   * Request api/employee/1
+   ### GET - Get products with condition
+   * Request api/products?price=150000&condition=greater_than
    * Response
    ```json
 {
-   "data": {
-      "employeeId": 1,
-      "name": "Trung Hieu",
-      "birthday": "01-07-2001",
-      "gender": "MALE",
-      "department": {
-         "departmentId": 1,
-         "name": "IT Department",
-         "description": "For devs"
-         }
-      }, 
-   "statusCode": 200
-}
-   ```
-   ### POST - Create new Employee by ID
-   * Request api/employee
-   ```json
-{
-   "name" : "Trung Hieu",
-   "birthday" : "01-07-2001",
-   "gender" : "MALE",
-   "departmentId" : 1
-}
-   ```
-   * Response
-   ```json
-{
-   "data": {
-      "employeeId": 1,
-      "name": "Trung Hieu",
-      "birthday": "01-07-2001",
-      "gender": "MALE",
-      "department": {
-         "departmentId": 1,
-         "name": "IT Department",
-         "description": "For developers"
-         }
-      },
-   "statusCode": 200
-}
-   ```
-   ### PUT - Update Employee by ID
-   * Request api/employee/1
-   ```json
-{
-   "gender" : "OTHER",
-   "departmentId" : 1
-}
-   ```
-   * Response
-   ```json
-{
-   "data": "true",
-   "statusCode": 200
-}
-   ```
-   ### DELETE - Delete Employee by ID
-   * Request api/employee/1
-   * Response
-   ```json
-{
-   "data": "true",
-   "statusCode": 200
-}
-   ```
-## Department APIs v2
-   ### GET - Get Department by ID with MyBatis
-   * Request api/v2/department/:id
-   * Response
-   ```json
-{
-   "data": {
-      "departmentId": 1,
-      "name": "IT Department",
-      "description": "For developers",
-      "employees": [
-         {
-            "employeeId": 1,
-            "name": "Trung Hieu",
-            "birthday": "01-07-2001",
-            "gender": "MALE"
-         }
-      ]
-   },
-   "statusCode": 200
-}   
-   ```
-## Employee APIs v2
-   ### GET - Get Employee by ID with MyBatis
-   * Request api/v2/employee/1
-   * Response
-   ```json
-{
-   "data": {
-      "employeeId": 1,
-      "name": "Trung Hieu",
-      "birthday": "01-07-2001",
-      "gender": "MALE",
-      "department": {
-         "departmentId": 1,
-         "name": "IT Department",
-         "description": "For devs"
+   "data": [
+      {
+         "id": 10,
+         "name": "Product 10",
+         "type": "product",
+         "size": "XL",
+         "price": 200000.00
       }
+   ],
+   "statusCode": 200
+}
+   ```
+   ### POST - Create new product
+  * Request api/product
+   ```json
+{
+    "name" : "Product 10",
+    "type" : "product",
+    "size" : "XL",
+    "price" : 200000
+}
+   ```
+  * Response
+  ```json
+{
+   "data": {
+      "id": 10,
+      "name": "Product 10",
+      "type": "product",
+      "size": "XL",
+      "price": 200000.0
    },
    "statusCode": 200
 }
    ```
-## Factory Method APIs
-   ### GET - Get computer type
-   * Request api/factory-method/PC
+## Cart APIs
+   ### GET - Get items from cart without param
+   * Request api/cart/items/:customerId
    * Response
    ```json
 {
-   "data": {
-      "computer": "PC",
-      "type": "PC"
-   },
+    "data": [
+        {
+            "cartId": 12,
+            "productId": 1,
+            "name": "Product 1",
+            "type": "product",
+            "size": "XL",
+            "price": 100000.00,
+            "quantity": 2,
+            "totalAmount": 200000.00,
+            "dateAdded": "29-08-2022"
+        },
+        {
+            "cartId": 12,
+            "productId": 2,
+            "name": "Product 2",
+            "type": "product",
+            "size": "XL",
+            "price": 100000.00,
+            "quantity": 2,
+            "totalAmount": 200000.00,
+            "dateAdded": "29-08-2022"
+        },
+        {
+            "cartId": 12,
+            "productId": 3,
+            "name": "Product 3",
+            "type": "product",
+            "size": "XL",
+            "price": 100000.00,
+            "quantity": 3,
+            "totalAmount": 300000.00,
+            "dateAdded": "29-08-2022"
+        }
+    ],
+    "statusCode": 200
+}
+   ```
+   ### GET - Get item from cart with param
+  * Request api/cart/items/:customerId?productName=Product 1&offset=0&limit=100
+  * Response
+  ```json
+   {
+   "data": [
+      {
+         "cartId": 12,
+         "productId": 1,
+         "name": "Product 1",
+         "type": "product",
+         "size": "XL",
+         "price": 100000.00,
+         "quantity": 2,
+         "totalAmount": 200000.00,
+         "dateAdded": "29-08-2022"
+      }
+   ],
+   "statusCode": 200
+}
+   ```
+   ### POST - Add item to cart
+   * Request api/cart/add-items/:customerId
+   ```json
+{
+    "items": [
+        {
+            "productId": 3,
+            "quantity": 3
+        }
+    ]
+}
+   ```
+   * Response
+   ```json
+{
+   "data": true,
    "statusCode": 200
 }
    ```
