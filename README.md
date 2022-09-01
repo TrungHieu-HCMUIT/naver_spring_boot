@@ -1,5 +1,8 @@
 # SpringBoot project of Naver's course
 
+## Note
+> The available data is saved on file db.mv.db (H2)
+
 ## APIs
 1. [Customer APIs](#customer-apis)
    1. [GET - Get customers](#get---get-customers)
