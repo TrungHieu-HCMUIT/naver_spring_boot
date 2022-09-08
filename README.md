@@ -41,7 +41,7 @@
 Get Employee DTO from request
 
 **`GET /employee`**
-```
+```json
 {
     "data": {
         "employeeId": 0,
@@ -59,7 +59,7 @@ Get Employee DTO from request
 Get Department DTO from request
 
 **`GET /department`**
-```
+```json
 {
     "data": {
         "departmentId": 0,
