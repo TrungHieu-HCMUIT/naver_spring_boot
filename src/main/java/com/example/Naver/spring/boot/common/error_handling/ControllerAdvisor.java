@@ -2,8 +2,11 @@ package com.example.naver.spring.boot.common.error_handling;
 
 import com.example.naver.spring.boot.common.ErrorResponse;
 import com.example.naver.spring.boot.common.error_handling.custom_exception.*;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindException;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
@@ -11,6 +14,13 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 
 @ControllerAdvice
 public class ControllerAdvisor extends ResponseEntityExceptionHandler {
+
+    @Override
+    protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex, HttpHeaders headers, HttpStatus status, WebRequest request) {
+        String message = ex.getBindingResult().getAllErrors().get(0).getDefaultMessage();
+        ErrorResponse response = new ErrorResponse(HttpStatus.BAD_REQUEST.value(), "ErrInvalidRequest", message);
+        return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
+    }
 
     @ExceptionHandler(DataNotFoundException.class)
     public ResponseEntity<Object> handleNotFoundException(
