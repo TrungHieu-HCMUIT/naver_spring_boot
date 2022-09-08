@@ -1,4 +1,4 @@
-package com.example.naver.spring.boot.common;
+package com.example.naver.spring.boot.aspect;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;

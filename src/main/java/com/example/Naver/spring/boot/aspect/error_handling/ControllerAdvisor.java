@@ -1,11 +1,10 @@
-package com.example.naver.spring.boot.common.error_handling;
+package com.example.naver.spring.boot.aspect.error_handling;
 
-import com.example.naver.spring.boot.common.ErrorResponse;
-import com.example.naver.spring.boot.common.error_handling.custom_exception.*;
+import com.example.naver.spring.boot.aspect.ErrorResponse;
+import com.example.naver.spring.boot.aspect.error_handling.custom_exception.*;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.BindException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;

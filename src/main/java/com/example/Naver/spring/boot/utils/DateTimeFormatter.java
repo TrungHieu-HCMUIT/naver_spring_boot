@@ -1,6 +1,6 @@
 package com.example.naver.spring.boot.utils;
 
-import com.example.naver.spring.boot.common.error_handling.custom_exception.InvalidRequestException;
+import com.example.naver.spring.boot.aspect.error_handling.custom_exception.InvalidRequestException;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

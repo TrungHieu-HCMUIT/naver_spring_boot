@@ -3,7 +3,6 @@ package com.example.naver.spring.boot.api.employee.controller;
 import com.example.naver.spring.boot.api.employee.controller.dto.request.EmployeeDto;
 import com.example.naver.spring.boot.api.employee.service.EmployeeService;
 import com.example.naver.spring.boot.base.BaseController;
-import com.example.naver.spring.boot.common.error_handling.custom_exception.InvalidRequestException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

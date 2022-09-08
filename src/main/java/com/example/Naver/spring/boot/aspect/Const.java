@@ -1,4 +1,4 @@
-package com.example.naver.spring.boot.common;
+package com.example.naver.spring.boot.aspect;
 
 public class Const {
     public static class EntityName {
