@@ -7,4 +7,4 @@ spring:
       server:
         git:
           uri: https://github.com/TrungHieu-HCMUIT/naver_spring_boot.git
-          default-label: master
+          default-label: Week_5_1
