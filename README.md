@@ -1,1 +1,0 @@
-# SpringBoot project of Naver's course
