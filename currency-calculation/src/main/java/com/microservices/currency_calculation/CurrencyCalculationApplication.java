@@ -1,4 +1,4 @@
-package com.microservices.currency_exchange;
+package com.microservices.currency_calculation;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -10,8 +10,8 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 @EnableFeignClients(
         basePackages = "com.microservices.clients"
 )
-public class CurrencyExchangeApplication {
+public class CurrencyCalculationApplication {
     public static void main(String[] args) {
-        SpringApplication.run(CurrencyExchangeApplication.class, args);
+        SpringApplication.run(CurrencyCalculationApplication.class, args);
     }
 }
