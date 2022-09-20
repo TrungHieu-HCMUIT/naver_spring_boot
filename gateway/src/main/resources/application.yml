@@ -6,6 +6,6 @@ spring:
     gateway:
       routes:
         - id: exchangeCalculationService
-          uri: lb://currency-calculation/
+          uri: lb://CURRENCY-CALCULATION/
           predicates:
-            - Path=/api/v1/calculate/**
+            - Path=/api/v1/**
