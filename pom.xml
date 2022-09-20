@@ -10,16 +10,13 @@
     <version>1.0-SNAPSHOT</version>
 
     <modules>
-        <module>customers</module>
-        <module>drivers</module>
-        <module>customers</module>
+        <module>currency-exchange</module>
         <module>gateway</module>
         <module>configserver</module>
+        <module>eureka-server</module>
     </modules>
 
     <name>microservices</name>
-    <!-- FIXME change it to the project's website -->
-    <url>http://www.example.com</url>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
