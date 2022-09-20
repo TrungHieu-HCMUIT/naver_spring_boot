@@ -1,11 +1,11 @@
 server:
-  port: 9088
+  port: 8765
 
 spring:
   cloud:
     gateway:
       routes:
-        - id: customerService
-          uri: http://localhost:8081/
+        - id: exchangeCalculationService
+          uri: lb://currency-calculation/
           predicates:
-            - Path=/api/v1/customer/**
+            - Path=/api/v1/calculate/**
